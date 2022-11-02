@@ -9,6 +9,13 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, function () {
     console.log("server is running...");
 });
+// share and allow api access all
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Header","Origin, X-Requested-With, Content-Type, Accept");
+    next();
+})
+
 //config connect to mysql
 const configDB = {
     host: "139.180.186.20",  // may chu chua db, binh thg la localhost
